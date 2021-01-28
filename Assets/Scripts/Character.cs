@@ -26,7 +26,7 @@ public class Character : MonoBehaviour
     LayerMask Ground;
 
 
-    Color raycolor;
+
 
     [SerializeField]
     float Raydistance;
@@ -37,17 +37,19 @@ public class Character : MonoBehaviour
     [SerializeField]
     float rotationspeed;
 
-    Rigidbody rb;
 
-    float angle;
 
-    Vector3 lookDirection;
+ 
 
-    Quaternion lookrotation;
+  
 
-    float step,horizontal,vertical;
 
     Vector3 finalvector;
+
+
+    [SerializeField]
+    float turnspeed;
+
 
     private void Awake()
     {
@@ -55,7 +57,9 @@ public class Character : MonoBehaviour
 
         characterinput = new Characte_Input();
 
-   
+
+
+
     }
 
     private void OnEnable()
@@ -72,12 +76,15 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
+        //Movimiento
 
         direction = characterinput.Land.Move.ReadValue<Vector2>();
 
@@ -88,29 +95,32 @@ public class Character : MonoBehaviour
 
         velocity = finalvector * speed;
 
-     
-        
-        if(cc.isGrounded)
+
+
+        if (cc.isGrounded)
         {
             if (characterinput.Land.Jump.triggered)
-               _velocityY = jumpstrenght;
+                _velocityY = jumpstrenght;
         }
-        if(cc.isGrounded == false)
+        if (cc.isGrounded == false)
         {
             _velocityY -= gravityforce;
         }
-            
-        
+
+
 
         velocity.y = _velocityY;
 
         cc.Move(velocity * Time.deltaTime);
 
 
+
+
      
+
+
     }
 
-   
 
 
 }
