@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Plane.001_Plane.004Mat
-  m_Shader: {fileID: -6465566751694194690, guid: 44804bf1b6307f7489be3ebda691044c, type: 3}
+  m_Name: floor_Plane.004Mat
+  m_Shader: {fileID: -6465566751694194690, guid: cba10adb0adb6564b82318b238de95ab, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,14 +19,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_D7D2919C:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_fefcaabc2fd34269b5cbd2df9aa7d263:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -84,15 +76,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_2A455339: 0.484
-    - Vector1_394C4A0: 22.9
-    - Vector1_52c93ed231f64c6da61184c089d1bb9d: 0
-    - Vector1_5A9E5888: 0.252
-    - Vector1_6362bc6767f64460af3dc1ce47ae03ee: 0.6
-    - Vector1_CD9CB9E8: 0
-    - Vector1_F5DCAAE8: 0.5
-    - Vector1_ba6522b0d54b44fca85fa5d5bc7c1201: 0
-    - Vector1_ec9db5654e544005945fee74e6d7c263: 1
+    - Vector1_f19b514f450547b68616afeeab8a42a5: 60
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -122,18 +106,14 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_008ea3c4360a422d9221fede8e205d8a: {r: 0, g: 0, b: 0, a: 0}
-    - Color_06edac713f174591be341fd4a70e12e1: {r: 0.45283014, g: 0, b: 0, a: 0}
-    - Color_5D5679D5: {r: 0.066037714, g: 0.016509429, b: 0.016509429, a: 0}
-    - Color_FA669E8D: {r: 0, g: 0, b: 0, a: 0}
-    - Color_FEF3A3A: {r: 1, g: 1, b: 1, a: 0}
-    - Color_e6ae8fc37baf44b4ad4ee46b532739df: {r: 1, g: 1, b: 1, a: 0}
+    - Color_9af539761af14e9f92fc37673d007919: {r: 1, g: 0, b: 0, a: 0}
+    - Color_e6d0d489b67b4680b477295636fd6fb6: {r: 1, g: 0.6901961, b: 0, a: 0}
     - _BaseColor: {r: 0.9063317, g: 0.9063317, b: 0.9063317, a: 1}
     - _Color: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1727183346019457454
+--- !u!114 &6592298243547421062
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

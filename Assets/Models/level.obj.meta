@@ -3,27 +3,7 @@ guid: 8172d2a0a23382248849b8151abe9721
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Plane.001_Plane.004Mat
-    second: {fileID: 2100000, guid: 7fe255a47e860354985f60163b8af96d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: walls_1_Plane.001Mat
-    second: {fileID: 2100000, guid: 8d0277dd866dbe14bbc65795735d9ceb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: walls_2_Plane.002Mat
-    second: {fileID: 2100000, guid: 20db89a3f6d66b94c925ba184b721c8c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: walls_3_Plane.003Mat
-    second: {fileID: 2100000, guid: b7641f7ced9763b478fadfa364784cde, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
