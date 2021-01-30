@@ -57,7 +57,7 @@ public class Character : MonoBehaviour
 
     Quaternion targetRotation;
 
-
+    Animator anim;
 
 
 
@@ -67,7 +67,7 @@ public class Character : MonoBehaviour
 
         characterinput = new Characte_Input();
 
-
+        anim = GetComponent<Animator>();
 
     }
 
@@ -96,7 +96,8 @@ public class Character : MonoBehaviour
 
         direction = characterinput.Land.Move.ReadValue<Vector2>();
 
-
+      
+       
 
         velocity = new Vector3(0,1,0);
 
@@ -111,12 +112,13 @@ public class Character : MonoBehaviour
         {
             _velocityY -= gravityforce;
         }
-
-
+        if(direction.x != 0 || direction.y != 0)
+         cc.Move(transform.forward  * speed * Time.deltaTime);
+        
 
         velocity.y = _velocityY;
 
-        cc.Move(transform.forward * speed * Time.deltaTime);
+
         cc.Move(velocity * Time.deltaTime);
 
 
@@ -124,11 +126,12 @@ public class Character : MonoBehaviour
 
       if( direction.x != 0 || direction.y != 0)
         {
+
             angle = Mathf.Atan2(direction.x, direction.y);
 
             angle = Mathf.Rad2Deg * angle;
 
-            angle = Mathf.Round(angle);
+            angle += cam.eulerAngles.y;
 
             targetRotation = Quaternion.Euler(0, angle, 0);
 
@@ -138,6 +141,18 @@ public class Character : MonoBehaviour
 
 
     }
+
+    private void LateUpdate()
+    {
+        if (direction.x != 0 || direction.y != 0)
+        {
+            anim.SetBool("Move", true);
+        }
+        else
+        {
+            anim.SetBool("Move", false);
+        }
+        }
 
 
 
