@@ -50,13 +50,22 @@ public class Character : MonoBehaviour
     [SerializeField]
     float turnspeed;
 
+    [SerializeField]
+    Transform cam;
+
+    float angle;
+
+    Quaternion targetRotation;
+
+
+
+
 
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
 
         characterinput = new Characte_Input();
-
 
 
 
@@ -76,7 +85,6 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -88,12 +96,9 @@ public class Character : MonoBehaviour
 
         direction = characterinput.Land.Move.ReadValue<Vector2>();
 
-        finalvector.x = direction.x;
-
-        finalvector.z = direction.y;
 
 
-        velocity = finalvector * speed;
+        velocity = new Vector3(0,1,0);
 
 
 
@@ -111,12 +116,25 @@ public class Character : MonoBehaviour
 
         velocity.y = _velocityY;
 
+        cc.Move(transform.forward * speed * Time.deltaTime);
         cc.Move(velocity * Time.deltaTime);
 
 
+        // rotacion
 
+      if( direction.x != 0 || direction.y != 0)
+        {
+            angle = Mathf.Atan2(direction.x, direction.y);
 
-     
+            angle = Mathf.Rad2Deg * angle;
+
+            angle = Mathf.Round(angle);
+
+            targetRotation = Quaternion.Euler(0, angle, 0);
+
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnspeed * Time.deltaTime);
+
+        }
 
 
     }
