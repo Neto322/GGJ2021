@@ -38,10 +38,11 @@ public class Character : MonoBehaviour
     float rotationspeed;
 
 
+    Rumbler rumbler;
 
- 
 
-  
+    [SerializeField]
+    Transform cat;
 
 
     Vector3 finalvector;
@@ -59,7 +60,20 @@ public class Character : MonoBehaviour
 
     Animator anim;
 
+    float distance;
 
+    float catfarness;
+
+
+    [SerializeField]
+    float purringOffset;
+
+    float purringstrenght;
+
+    float purr = 0;
+
+    [SerializeField]
+    float purrs_per_second;
 
     private void Awake()
     {
@@ -68,6 +82,8 @@ public class Character : MonoBehaviour
         characterinput = new Characte_Input();
 
         anim = GetComponent<Animator>();
+
+        rumbler = GetComponent<Rumbler>();
 
     }
 
@@ -91,6 +107,29 @@ public class Character : MonoBehaviour
     void Update()
     {
 
+        //Calcular distancia entre personaje y gato
+
+        distance = Vector3.Distance(cat.position, transform.position);
+
+        //Hacer ronronidos su fuerza cambiara dependiendo de la distancia
+
+      
+        catfarness = purringOffset / distance;
+
+       if(distance > 1f)
+        {
+            if (Time.time > purr)
+            {
+
+                rumbler.RumblePulse(catfarness);
+
+                purr = Time.time + purrs_per_second;
+            }
+        }
+        else
+        {
+            rumbler.RumblePulse(catfarness);
+        }
 
         //Movimiento
 
@@ -106,7 +145,10 @@ public class Character : MonoBehaviour
         if (cc.isGrounded)
         {
             if (characterinput.Land.Jump.triggered)
+            {
                 _velocityY = jumpstrenght;
+
+            }
         }
         if (cc.isGrounded == false)
         {

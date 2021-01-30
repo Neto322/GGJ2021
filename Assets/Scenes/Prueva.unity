@@ -172,8 +172,11 @@ MonoBehaviour:
     m_Bits: 64
   Raydistance: 1
   rotationspeed: 4
-  turnspeed: 3.71
+  cat: {fileID: 1037791469}
+  turnspeed: 9.13
   cam: {fileID: 2119528496}
+  purringOffset: 2
+  purrs_per_second: 2
 --- !u!143 &32321151
 CharacterController:
   m_ObjectHideFlags: 0
@@ -192,6 +195,21 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: -0.06, y: 1, z: 0.06}
+--- !u!114 &32321152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32321147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c84faadbe7476d4e8afe552e85900bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rumbleStep: 1
+  durration: 1
+  isMotorActive: 0
 --- !u!1 &413373977
 GameObject:
   m_ObjectHideFlags: 3
@@ -758,6 +776,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!4 &1037791469 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b25d0b74495a81c4b874dbabdc7ea54c, type: 3}
+  m_PrefabInstance: {fileID: 1632038794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1107709537
 PrefabInstance:
   m_ObjectHideFlags: 0
