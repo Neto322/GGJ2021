@@ -105,7 +105,7 @@ public class Character : MonoBehaviour
 
         rumbler = GetComponent<Rumbler>();
 
-
+        estado = true;
     }
 
     private void OnEnable()
@@ -179,7 +179,11 @@ public class Character : MonoBehaviour
         direction = characterinput.Land.Move.ReadValue<Vector2>();
 
       
-       
+       if(characterinput.Land.Jump.triggered)
+        {
+            StartCoroutine("Grab");
+        }
+        
 
         velocity = new Vector3(0,1,0);
 
@@ -197,8 +201,10 @@ public class Character : MonoBehaviour
         {
             _velocityY -= gravityforce;
         }
-       
-         cc.Move(transform.forward  * speed * Time.deltaTime);
+
+
+        if(estado == true)
+        cc.Move(transform.forward  * speed * Time.deltaTime);
         
 
         velocity.y = _velocityY;
@@ -222,7 +228,8 @@ public class Character : MonoBehaviour
 
             targetRotation = Quaternion.Euler(0, angle, 0);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnspeed * Time.deltaTime);
+            if (estado == true)
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnspeed * Time.deltaTime);
 
         }
 
@@ -265,7 +272,40 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-   
+        
         switrcher.CambiarCam(other.name);
+
+        
+
+
+     
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "a")
+        {
+            anim.SetTrigger("Dance");
+        }
+
+        if (estado == false)
+        {
+            Cat_Animator cat = other.GetComponent<Cat_Animator>();
+
+            cat.Animar();
+
+          
+        }
+    }
+
+    IEnumerator Grab()
+    {
+        anim.SetBool("Grab",true);
+        estado = false;
+        yield return new WaitForSeconds(3f);
+
+        estado = true;
+        anim.SetBool("Grab", false);
+        yield return null;
     }
 }

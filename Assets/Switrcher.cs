@@ -8,8 +8,10 @@ public class Switrcher : MonoBehaviour
     [SerializeField]
     CinemachineVirtualCamera[] cams;
     
+    [SerializeField]
+    CinemachineVirtualCamera[] catcams;
 
-
+    int i = 0;
     public void CambiarCam(string id)
     {
 
@@ -27,5 +29,29 @@ public class Switrcher : MonoBehaviour
             }
 
         }
+    }
+
+
+
+    public void DesenfocarGato()
+    {
+        
+
+            catcams[i].Priority = 0;
+
+
+
+
+        
+    }
+
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(6f);
+
+        DesenfocarGato();
+
+        yield return null;
     }
 }
