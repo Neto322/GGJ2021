@@ -298,11 +298,17 @@ public class Character : MonoBehaviour
 
         if (estado == false)
         {
+
+            AudioSource cat2;
+
+            cat2 = other.GetComponent<AudioSource>();
+
+            cat2.Play();
+
             Cat_Animator cat = other.GetComponent<Cat_Animator>();
 
             cat.Animar();
 
-          
         }
     }
 
@@ -311,9 +317,10 @@ public class Character : MonoBehaviour
         anim.SetBool("Grab",true);
         estado = false;
         yield return new WaitForSeconds(3f);
-
-        estado = true;
         anim.SetBool("Grab", false);
+        yield return new WaitForSeconds(1f);
+        estado = true;
+     
         yield return null;
     }
 }
