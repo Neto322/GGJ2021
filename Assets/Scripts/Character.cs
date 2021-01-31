@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
     Characte_Input characterinput;
 
     [SerializeField]
-    float speed;
+    float topspeed;
 
     [SerializeField]
     float jumpstrenght;
@@ -75,6 +75,26 @@ public class Character : MonoBehaviour
     [SerializeField]
     float purrs_per_second;
 
+    float joy;
+
+
+    [SerializeField]
+    float aceleration;
+
+
+    float speed;
+
+
+    [SerializeField]
+    float acl;
+
+    float momentum;
+
+    [SerializeField]
+    Switrcher switrcher;
+
+    bool estado;
+
     private void Awake()
     {
         cc = GetComponent<CharacterController>();
@@ -84,6 +104,7 @@ public class Character : MonoBehaviour
         anim = GetComponent<Animator>();
 
         rumbler = GetComponent<Rumbler>();
+
 
     }
 
@@ -106,6 +127,26 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (direction.x != 0 || direction.y != 0)
+        {
+                speed += Time.time * aceleration;
+
+
+        }
+
+        else
+        {
+            
+            speed -= Time.time * aceleration;
+        }
+
+        if (speed >= topspeed)
+            speed = topspeed;
+
+        if (speed < 0)
+            speed = 0;
+
+           
 
         //Calcular distancia entre personaje y gato
 
@@ -133,6 +174,8 @@ public class Character : MonoBehaviour
 
         //Movimiento
 
+
+
         direction = characterinput.Land.Move.ReadValue<Vector2>();
 
       
@@ -154,7 +197,7 @@ public class Character : MonoBehaviour
         {
             _velocityY -= gravityforce;
         }
-        if(direction.x != 0 || direction.y != 0)
+       
          cc.Move(transform.forward  * speed * Time.deltaTime);
         
 
@@ -163,10 +206,12 @@ public class Character : MonoBehaviour
 
         cc.Move(velocity * Time.deltaTime);
 
+       
+
 
         // rotacion
 
-      if( direction.x != 0 || direction.y != 0)
+        if ( direction.x != 0 || direction.y != 0)
         {
 
             angle = Mathf.Atan2(direction.x, direction.y);
@@ -186,16 +231,41 @@ public class Character : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (direction.x != 0 || direction.y != 0)
+       
+
+        if (direction.x != 0 || direction.y != 0 )
         {
-            anim.SetBool("Move", true);
+            if(momentum <1)
+            momentum += Time.time * acl;
+            else
+            {
+
+            }
+
         }
+
+        
+
         else
         {
-            anim.SetBool("Move", false);
+            momentum -= Time.time * acl;
         }
+
+        if(momentum < 0)
+        {
+            momentum = 0;
         }
 
 
+        anim.SetFloat("Blend", momentum);
 
+
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+   
+        switrcher.CambiarCam(other.name);
+    }
 }
