@@ -273,12 +273,20 @@ public class Character : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        switrcher.CambiarCam(other.name);
-
+        if(other.name != "Camm")
+        {
+            switrcher.CambiarCam(other.name);
+        }
+        else
+        {
+            Destroy(other.gameObject);
+        }
         
 
 
-     
+
+
+
     }
 
     private void OnTriggerStay(Collider other)
